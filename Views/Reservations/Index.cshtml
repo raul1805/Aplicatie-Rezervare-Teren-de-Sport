@@ -1,0 +1,48 @@
+@model IEnumerable<SportsReservationApp.Models.Reservation>
+
+@{
+    ViewData["Title"] = "Rezervari";
+}
+
+<h1>Lista Rezervari</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Adauga Rezervare Noua</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Ora</th>
+            <th>Teren</th>
+            <th>Client</th>
+            <th>Contact</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Date.ToShortDateString()
+            </td>
+            <td>
+                @item.StartHour:00 - @(item.StartHour + 1):00
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Field.Name) 
+                <small>(@item.Field.Type)</small>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerContact)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Anuleaza</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

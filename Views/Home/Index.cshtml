@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bine ati venit!</h1>
+    <p>Aplicatie pentru rezervarea terenurilor sportive.</p>
+    <hr />
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Terenuri</h5>
+                    <p class="card-text">Vezi lista terenurilor disponibile si facilitatile lor.</p>
+                    <a href="/SportFields" class="btn btn-primary">Vezi Terenuri</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Rezervari</h5>
+                    <p class="card-text">Fa o rezervare rapida online pentru sportul preferat.</p>
+                    <a href="/Reservations/Create" class="btn btn-success">Rezerva Acum</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Rapoarte</h5>
+                    <p class="card-text">Vezi statistici despre cele mai populare terenuri.</p>
+                    <a href="/Reports" class="btn btn-info">Vezi Rapoarte</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

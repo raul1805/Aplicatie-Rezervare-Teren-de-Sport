@@ -1,0 +1,45 @@
+@model SportsReservationApp.Models.Reservation
+
+@{
+    ViewData["Title"] = "Anulare";
+}
+
+<h1>Anulare Rezervare</h1>
+
+<h3>Sigur doriti sa anulati aceasta rezervare?</h3>
+<div>
+    <h4>Reservation</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Date.ToShortDateString()
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StartHour)
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.StartHour:00 - @(Model.StartHour + 1):00
+        </dd>
+        <dt class = "col-sm-2">
+            Teren
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Field.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Client
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Confirm Anularea" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Inapoi</a>
+    </form>
+</div>

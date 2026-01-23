@@ -1,0 +1,54 @@
+@{
+    ViewData["Title"] = "Rapoarte";
+    var popularFields = ViewBag.PopularFields as dynamic;
+    var fieldNames = ViewBag.FieldNames as Dictionary<int, string>;
+}
+
+<h1>Rapoarte si Statistici</h1>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h3 class="card-title text-center">Total Rezervari</h3>
+                <h1 class="text-center display-1">@ViewBag.TotalReservations</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <h3>Top 5 Cele Mai Populare Terenuri</h3>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Loc</th>
+                    <th>Nume Teren</th>
+                    <th>Numar Rezervari</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int i = 1; }
+                @foreach (var item in popularFields)
+                {
+                    <tr>
+                        <td>@(i++)</td>
+                        <td>@(fieldNames.ContainsKey(item.FieldId) ? fieldNames[item.FieldId] : "Teren sters")</td>
+                        <td>@item.Count</td>
+                    </tr>
+                }
+                @if (popularFields.Count == 0)
+                {
+                    <tr>
+                        <td colspan="3" class="text-center">Nu exista date suficiente.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Inapoi la Acasa</a>
+</div>

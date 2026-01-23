@@ -1,0 +1,56 @@
+@model SportsReservationApp.Models.Reservation
+
+@{
+    ViewData["Title"] = "Rezervare Noua";
+}
+
+<h1>Rezervare Noua</h1>
+
+<h4>Reservation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="FieldId" class="control-label">Alege Terenul</label>
+                <select asp-for="FieldId" class ="form-control" asp-items="ViewBag.FieldId"></select>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" type="date" value="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="StartHour" class="control-label">Ora Inceput (8 - 21)</label>
+                <input asp-for="StartHour" class="form-control" type="number" min="8" max="21" />
+                <small class="form-text text-muted">Durata rezervarii este de 1 ora.</small>
+                <span asp-validation-for="StartHour" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="CustomerName" class="control-label"></label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="CustomerContact" class="control-label"></label>
+                <input asp-for="CustomerContact" class="form-control" placeholder="Telefon sau Email" />
+                <span asp-validation-for="CustomerContact" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Rezerva" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Inapoi</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
