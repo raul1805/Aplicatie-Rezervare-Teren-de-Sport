@@ -8,7 +8,7 @@ builder.Services.AddDbContext<SportsReservationApp.Data.ApplicationDbContext>(op
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<SportsReservationApp.Services.ReservationService>();
-
+// Test comment from VS Code
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
